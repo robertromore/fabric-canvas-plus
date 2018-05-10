@@ -1,0 +1,79 @@
+<html>
+<head>
+  <title>Fabric CanvasPlus Demo</title>
+  <style type="text/css">
+    @import url('./style.css');
+  </style>
+</head>
+<body>
+  <script type="text/javascript" src="./fabric.js"></script>
+  <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/2.2.3/fabric.min.js"></script> -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.min.js"></script>
+  <script type="text/javascript" src="./fabric-canvas-plus.min.js"></script>
+  <script type="text/javascript">
+    (function(fabric) {
+      var $body = document.body;
+      var $foundation = null;
+      var $canvasWrapper = null;
+      var canvas = null;
+      var $canvas = null;
+
+      fabric.FabricUI = fabric.util.createClass(
+        fabric.CommonMethods,
+        /** @lends fabric.FabricUI.prototype */ {
+          initialize: function() {
+            this.createFoundation();
+
+            this.foundation = new fabric.CanvasPlus('c', {
+              width: $canvasWrapper.offsetWidth,
+              height: $canvasWrapper.offsetHeight,
+              parent: $canvasWrapper
+            });
+
+            // Disable pinch-to-zoom on browser window.
+            fabric.util.addListener(window, 'mousewheel', function(e) {
+              e.preventDefault();
+              return false;
+            });
+
+            return this;
+          },
+
+          createFoundation: function() {
+            var $this = this;
+
+            $foundation = document.createElement('div');
+            $foundation.className = 'fibrous-fabric-js';
+
+            var $toolbar = document.createElement('div');
+            $toolbar.className = 'toolbar vertical';
+
+            var $button = document.createElement('div');
+
+            $toolbar.appendChild($button);
+            $foundation.appendChild($toolbar);
+
+            var $panels = document.createElement('div');
+            $panels.className = 'panels';
+            $foundation.appendChild($panels);
+
+            $canvasWrapper = document.createElement('div');
+            $canvasWrapper.className = 'canvas-wrapper';
+
+            $canvas = fabric.util.createCanvasElement();
+            $canvas.id = 'c';
+
+            $canvasWrapper.appendChild($canvas);
+            $foundation.appendChild($canvasWrapper);
+            $body.appendChild($foundation);
+
+            return this;
+          }
+        }
+      );
+    })(window.fabric);
+
+    var FabricUI = new fabric.FabricUI();
+  </script>
+</body>
+</html>

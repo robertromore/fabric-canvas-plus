@@ -1,0 +1,79 @@
+.fibrous-fabric-js {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #222;
+}
+
+.fibrous-fabric-js .toolbar,
+.fibrous-fabric-js .panels {
+  background-color: #333;
+}
+
+.fibrous-fabric-js .toolbar.vertical {
+  width: 40px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.fibrous-fabric-js .toolbar button {
+  width: 32px;
+  height: 32px;
+  margin: 4px;
+  border: 1px #333 solid;
+  background-color: #333;
+  outline: true;
+}
+
+.fibrous-fabric-js .toolbar button:active,
+.fibrous-fabric-js .toolbar button.active {
+  outline: none;
+  background-color: #272727;
+  border: 1px #303030 solid;
+  user-select: none;
+}
+
+.fibrous-fabric-js .panels {
+  width: 240px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.fibrous-fabric-js .canvas-wrapper {
+  position: absolute;
+  left: 40px;
+  right: 240px;
+  top: 0;
+  bottom: 0;
+}
+
+.fibrous-fabric-js .canvas-container {
+  float: left;
+}
+
+#hRuler, #hCursor, #vRuler, #vCursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#vRuler {
+  top: 30px;
+}
+
+#debug {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, .7);
+  color: #fff;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+}
