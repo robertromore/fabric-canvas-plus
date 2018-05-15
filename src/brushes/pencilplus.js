@@ -6,7 +6,6 @@ fabric.BetterPencilBrush = fabric.util.createClass(fabric.PencilBrush, /** @lend
     this._cursorOnCanvas = false;
   },
   onMouseDown: function(pointer) {
-    console.log(pointer)
     this._cursorOnCanvas = !this._isOffCanvas(pointer);
     if (!this._cursorOnCanvas) {
       return;
@@ -21,7 +20,7 @@ fabric.BetterPencilBrush = fabric.util.createClass(fabric.PencilBrush, /** @lend
     this._cursorOnCanvas = !this._isOffCanvas(pointer);
     if (this._cursorOnCanvas && !wasOnCanvas) {
       if (this._lines[this._lineIndex].length > 0) {
-        this._lines[++this._lineIndex] = new Array();
+        this._lines[++this._lineIndex] = [];
         this._prepareForDrawing(pointer) && this._captureDrawingPath(pointer);
       }
       this.oldEnd = pointer;

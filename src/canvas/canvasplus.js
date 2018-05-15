@@ -72,9 +72,9 @@ fabric.CanvasPlus = fabric.util.createClass(
               width: 1,
               color: 'rgba(255, 255, 255, 1)',
               sizes: {
-                large: .6,
-                medium: .8,
-                small: .9
+                large: 0.6,
+                medium: 0.8,
+                small: 0.9
               }
             },
             unitDisplay: {
@@ -147,7 +147,7 @@ fabric.CanvasPlus = fabric.util.createClass(
         },
         zoom: {
           max: 2000000,
-          min: .001,
+          min: 0.001,
           rate: 100,
           mode: 'progressive' // 'progressive', 'linear'
         },
@@ -622,10 +622,10 @@ fabric.CanvasPlus = fabric.util.createClass(
         rulerctx.fill();
 
         var intervals = this._getRulerZoomIntervals();
-        var large = intervals['large'];
-        var medium = intervals['medium'];
-        var small = intervals['small'];
-        var step = intervals['step'];
+        var large = intervals.large;
+        var medium = intervals.medium;
+        var small = intervals.small;
+        var step = intervals.step;
 
         var zoom = vpt[ruler._vptZoomIndice];
         var min = this._getRulerMinAmount(vpt[ruler._vptIndice], zoom, step);
@@ -641,12 +641,12 @@ fabric.CanvasPlus = fabric.util.createClass(
         rulerctx.beginPath();
         for (i = min; i <= max; i += step) {
           if (large > 0 && i % large == 0) {
-            multiplier = ruler.lines.sizes['large'];
+            multiplier = ruler.lines.sizes.large;
             drawLabel = true;
           } else if (medium > 0 && i % medium == 0) {
-            multiplier = ruler.lines.sizes['medium'];
+            multiplier = ruler.lines.sizes.medium;
           } else if (small > 0 && i % small == 0) {
-            multiplier = ruler.lines.sizes['small'];
+            multiplier = ruler.lines.sizes.small;
           } else {
             continue;
           }
@@ -762,22 +762,22 @@ fabric.CanvasPlus = fabric.util.createClass(
       var spacing = 0;
       var subdivisions = 5;
 
-      if (zoom < .005) {
+      if (zoom < 0.005) {
         spacing = 50000;
       }
-      else if (zoom >= .005 && zoom < .01) {
+      else if (zoom >= 0.005 && zoom < 0.01) {
         spacing = 10000;
       }
-      else if (zoom >= .01 && zoom < .05) {
+      else if (zoom >= 0.01 && zoom < 0.05) {
         spacing = 5000;
       }
-      else if (zoom >= .05 && zoom < .1) {
+      else if (zoom >= 0.05 && zoom < 0.1) {
         spacing = 1000;
       }
-      else if (zoom >= .1  && zoom < .5) {
+      else if (zoom >= 0.1 && zoom < 0.5) {
         spacing = 500;
       }
-      else if (zoom >= .5 && zoom < 5) {
+      else if (zoom >= 0.5 && zoom < 5) {
         spacing = 100;
       }
       else if (zoom >= 5 && zoom < 8) {
@@ -880,8 +880,6 @@ fabric.CanvasPlus = fabric.util.createClass(
       this.calcViewportBoundaries();
       this.clearContext(ctx);
       this.fire('before:render');
-
-      this.freeDrawingBrush.color = 'black';
 
       ctx.save();
       this._renderBackground(ctx, v);
